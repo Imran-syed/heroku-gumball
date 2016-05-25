@@ -41,7 +41,7 @@ var modelNumber = 2;
 var serialNumber = 1234;
 //var options = {server: {reconnectInterval:50, reconnectTries:5}};
 
-var connectionString = "mongodb://52.33.198.61," + "52.40.30.56," + "52.40.148.169:27017" + "/gumball" + "?readPreference=secondary&" + "w=2";
+var connectionString = "mongodb://52.38.229.254," + "52.40.173.246," + "52.40.175.213:27017" + "/gumball" + "?readPreference=secondary&" + "w=2";
 var options = {
 	server: {
 		reconnectInterval:50,
