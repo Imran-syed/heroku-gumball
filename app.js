@@ -26,20 +26,38 @@ var express = require('express');
 var Client = require('node-rest-client').Client;
 var MongoClient = require('mongodb').MongoClient;
 
-var connectionString = "mongodb://52.40.82.144," +
-    "52.40.129.76," +
-    "52.38.117.207" +
+/*var connectionString = "mongodb://52.39.127.124," +
+    "52.40.30.56," +
+    "52.40.148.169" +
     "/gumball" +
     "?readPreference=secondary&" +
     "w=2&" +
     "wtimeoutMS=2000&" +
-    "connectTimeoutMS=5000&" +
-    "replicaSet=kjCluster";
+    "connectTimeoutMS=500&" +
+    "replicaSet=cmpe281";*/
 
 var assert = require("assert");
 var modelNumber = 2;
 var serialNumber = 1234;
-var options = {server: {reconnectInterval:50, reconnectTries:5}};
+//var options = {server: {reconnectInterval:50, reconnectTries:5}};
+
+var connectionString = "mongodb://52.33.198.61," + "52.40.30.56," + "52.40.148.169:27017" + "/gumball" + "?readPreference=secondary&" + "w=2";
+var options = {
+	server: {
+		reconnectInterval:50,
+		reconnectTries:5,
+      socketOptions: {
+        connectTimeoutMS: 500
+      }
+    },
+	replSet: {
+		reconnectWait :1000,
+		rs_name:'cmpe281',
+	}
+}
+
+
+
 var app = express();
 app.use(express.bodyParser());
 app.use("/images", express.static(__dirname + '/images'));
